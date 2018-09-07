@@ -11,9 +11,16 @@ public class PlayerController : MonoBehaviour {
 
     #region main variables
     public bool blockContrllerInput = false;
+
+    private CharacterMovement characterMovement;
     #endregion main variables
 
     #region monobehaiovur methods
+    private void Start()
+    {
+        characterMovement = GetComponent<CharacterMovement>();
+    }
+
     private void Update()
     {
         if (blockContrllerInput)
@@ -22,6 +29,8 @@ public class PlayerController : MonoBehaviour {
         }
         float horizontalInput = Input.GetAxisRaw(HORIZONTAL);
         float verticalInput = Input.GetAxisRaw(VERTICAL);
+
+        characterMovement.UpdateMovement(horizontalInput, verticalInput);
 
     }
     #endregion monobehaviour methods

@@ -6,6 +6,8 @@ public class CharacterMovement : MonoBehaviour {
     [Tooltip("The maximum speed of the character")]
     public float maxCharacterSpeed;
 
+    public float movementAcceleration = 10;
+
     private Rigidbody rigid;
 
     private void Start()
@@ -14,11 +16,19 @@ public class CharacterMovement : MonoBehaviour {
     }
 
     /// <summary>
-    /// Updates the movement speed of the character
+    /// 
     /// </summary>
-    private void UpdateMovementSpeed()
+    /// <param name="horizontalInput"></param>
+    /// <param name="verticalInput"></param>
+    public void UpdateMovement(float horizontalInput, float verticalInput)
     {
+        float mag = Mathf.Min(new Vector2(horizontalInput, verticalInput).magnitude, 1);
+        Vector3 currentVelocity = rigid.velocity;
+        currentVelocity.y = 0;
+        Vector3 goalVelocity = mag * (new Vector3(horizontalInput, 0, verticalInput)).normalized * maxCharacterSpeed;
 
+        Vector3 velocity = Vector3.MoveTowards(currentVelocity, goalVelocity, Time.fixedDeltaTime * movementAcceleration);
+        rigid.velocity = new Vector3(velocity.x, rigid.velocity.y, velocity.z);
     }
     
     private void Jump()
