@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CombatManager : MonoBehaviour {
+    
+
     public Transform[] allEnemyCombatSpawnPoints;
     public Transform[] allPlayerPartyCombatSpawnPoints;
     public Transform activePlayerPosition;

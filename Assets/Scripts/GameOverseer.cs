@@ -28,6 +28,15 @@ public class GameOverseer : MonoBehaviour {
     }
     public GameState currentGameState { get; private set; }
 
+    [Header("Combat Character Prefabs")]
+    public CombatCharacter foxCombatPrefab;
+    public CombatCharacter bearCombatPrefab;
+    public CombatCharacter owlCombatPrefab;
+    [Space(3)]
+    public CombatCharacter golemCombatPrefab;
+    public CombatCharacter slimeCombatPrefab;
+    public CombatCharacter mushroomCombatPrefab;
+
 
     private void Awake()
     {
