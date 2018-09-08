@@ -7,6 +7,8 @@ public class CombatManager : MonoBehaviour {
     public Transform[] allPlayerPartyCombatSpawnPoints;
     public Transform activePlayerPosition;
 
+    private List<CombatCharacter> orderOfCharacterBasedOnSpeed = new List<CombatCharacter>();
+
     private void OnDrawGizmos()
     {
         float spherePointRadius = .5f;
@@ -25,5 +27,11 @@ public class CombatManager : MonoBehaviour {
         }
         Gizmos.color = Color.green;
         Gizmos.DrawSphere(activePlayerPosition.position, spherePointRadius);
+    }
+
+    
+    public void SetupCombatScenario()
+    {
+
     }
 }

@@ -20,7 +20,7 @@ public class SelectableButton : SelectableUI {
     {
         if (buttonBackgroundImage != null)
         {
-            defaultButtonTextColor = buttonBackgroundImage.color;
+            defaultButtonBackgroundColor = buttonBackgroundImage.color;
         }    
         if (buttonText != null)
         {
