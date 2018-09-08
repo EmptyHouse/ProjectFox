@@ -6,6 +6,13 @@ using UnityEngine;
 /// Base class for selectable UI objects, such as sliders, buttons, etc
 /// </summary>
 public abstract class SelectableUI : MonoBehaviour {
+    #region const variables
+    protected const string SELECT_BUTTON = "Select";
+    protected const string CANCEL_BUTTON = "Cancel";
+    protected const string HORIZONTAL_INPUT = "Horizontal";
+    protected const string VERTICAL_INPUT = "Vertical";
+    #endregion const variables
+
     public enum Directions
     {
         North,
@@ -15,13 +22,20 @@ public abstract class SelectableUI : MonoBehaviour {
     }
 
     private const float JOYSTICK_ACTIVATION_THRESHOLD = .7f;
+    protected Color DISABLED_COLOR
+    {
+        get
+        {
+            return new Color(.3f, .3f, .3f);
+        }
+    }
 
     public SelectableUI northUINode;
     public SelectableUI southUINode;
     public SelectableUI eastUINode;
     public SelectableUI westUINode;
 
-    public bool isNodeDisabled = false;
+    public bool isNodeDisabled { get; private set; }
 
     public SelectableUI GetNodeInDirection(Directions directionToRetrieveNode)
     {
@@ -40,7 +54,7 @@ public abstract class SelectableUI : MonoBehaviour {
         return null;
     }
 
-    public abstract void DisplayNodeAsDisabled();
+    public abstract void DisplayNodeAsDisabled(bool isNodeDisabled);
 
     public abstract void VisuallyUpdateNode();
 
