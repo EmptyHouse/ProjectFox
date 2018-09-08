@@ -57,6 +57,25 @@ public abstract class SelectableUI : MonoBehaviour {
     public abstract void DisplayNodeAsDisabled(bool isNodeDisabled);
 
     public abstract void VisuallyUpdateNode();
+    #region input methods
+    public bool GetSelectButtonDown()
+    {
+        return Input.GetButtonDown(SELECT_BUTTON);
+    }
 
-    public abstract void UpdateNodeValue();
+    public bool GetCancelButtonDown()
+    {
+        return Input.GetButtonDown(CANCEL_BUTTON);
+    }
+
+    public float GetHorizontal()
+    {
+        return Input.GetAxisRaw(HORIZONTAL_INPUT);
+    }
+
+    public float GetVertical()
+    {
+        return Input.GetAxisRaw(VERTICAL_INPUT);
+    }
+    #endregion input methods
 }

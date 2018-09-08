@@ -18,11 +18,11 @@ public class SelectableButton : SelectableUI {
     #region monobehaviour methods
     private void Start()
     {
-        if (buttonBackgroundImage)
+        if (buttonBackgroundImage != null)
         {
             defaultButtonTextColor = buttonBackgroundImage.color;
         }    
-        if (buttonText)
+        if (buttonText != null)
         {
             defaultButtonTextColor = buttonText.color;
         }
@@ -30,7 +30,10 @@ public class SelectableButton : SelectableUI {
 
     private void Update()
     {
-        
+        if (GetSelectButtonDown())
+        {
+            buttonEvent.Invoke(this, false);
+        }
     }
     #endregion monobehaivour methods
 
@@ -39,16 +42,16 @@ public class SelectableButton : SelectableUI {
     {
         if (isNodeDisabled)
         {
-            if (buttonBackgroundImage)
+            if (buttonBackgroundImage != null)
                 buttonBackgroundImage.color = DISABLED_COLOR;
-            if (buttonText)
+            if (buttonText != null)
                 buttonText.color = DISABLED_COLOR;
         }
         else
         {
-            if (buttonBackgroundImage)
+            if (buttonBackgroundImage != null)
                 buttonBackgroundImage.color = defaultButtonBackgroundColor;
-            if (buttonText)
+            if (buttonText != null)
             {
                 buttonText.color = defaultButtonTextColor;
             }
@@ -56,14 +59,9 @@ public class SelectableButton : SelectableUI {
 
     }
 
-    public override void UpdateNodeValue()
-    {
-        throw new System.NotImplementedException();
-    }
-
     public override void VisuallyUpdateNode()
     {
-        throw new System.NotImplementedException();
+        buttonEvent.Invoke(this, true);
     }
     #endregion override methods
     [System.Serializable]
