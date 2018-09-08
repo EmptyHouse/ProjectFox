@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CombatCharacter : MonoBehaviour {
-    
+    public enum Alliance
+    {
+        Enemy,
+        Player,
+    }
 
     [Header("Default Stats")]
     public float maxHealthPoints = 20f;
