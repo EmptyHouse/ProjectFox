@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public abstract class SelectableUI : MonoBehaviour {
     #region const variables
-    protected const string SELECT_BUTTON = "Select";
+    protected const string SELECT_BUTTON = "Submit";
     protected const string CANCEL_BUTTON = "Cancel";
     protected const string HORIZONTAL_INPUT = "Horizontal";
     protected const string VERTICAL_INPUT = "Vertical";
@@ -21,7 +21,7 @@ public abstract class SelectableUI : MonoBehaviour {
         West
     }
 
-    private const float JOYSTICK_ACTIVATION_THRESHOLD = .7f;
+    public const float JOYSTICK_ACTIVATION_THRESHOLD = .6f;
     protected Color DISABLED_COLOR
     {
         get
@@ -58,22 +58,22 @@ public abstract class SelectableUI : MonoBehaviour {
 
     public abstract void VisuallyUpdateNode();
     #region input methods
-    public bool GetSelectButtonDown()
+    public static bool GetSelectButtonDown()
     {
         return Input.GetButtonDown(SELECT_BUTTON);
     }
 
-    public bool GetCancelButtonDown()
+    public static bool GetCancelButtonDown()
     {
         return Input.GetButtonDown(CANCEL_BUTTON);
     }
 
-    public float GetHorizontal()
+    public static float GetHorizontal()
     {
         return Input.GetAxisRaw(HORIZONTAL_INPUT);
     }
 
-    public float GetVertical()
+    public static float GetVertical()
     {
         return Input.GetAxisRaw(VERTICAL_INPUT);
     }
