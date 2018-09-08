@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CombatManager : MonoBehaviour {
-    
+    public float timeForPlayerCharacterToREachFront = .1f;
+
+    public CombatCharacter.Alliance currentActiveAlliance;
+    public CombatCharacter currentlyActiveCharacter;
+    public int currentlySpawnedCharacterIndex;
 
     public Transform[] allEnemyCombatSpawnPoints;
     public Transform[] allPlayerPartyCombatSpawnPoints;
@@ -82,8 +86,58 @@ public class CombatManager : MonoBehaviour {
         {
             allPlayerCharacters[i].transform.position = allPlayerPartyCombatSpawnPoints[i].position;
         }
+        foreach (CombatCharacter c in allPlayerCharacters)
+        {
+            orderOfCharacterBasedOnSpeed.Add(c);
+        }
 
+        foreach (CombatCharacter c in allEnemyCharacters)
+        {
+            orderOfCharacterBasedOnSpeed.Add(c);
+        }
+
+        SetNextActiveCharacter(0);
     }
 
+    private void SetNextActiveCharacter(int nextCharacterIndex)
+    {
+        CombatCharacter characterToMoveNext = orderOfCharacterBasedOnSpeed[nextCharacterIndex];
+        if (currentlyActiveCharacter != null && currentlyActiveCharacter.characterAlliance == CombatCharacter.Alliance.Player)
+        {
+            for (int i = 0; i < allPlayerCharacters.Count; i++)
+            {
+                if (currentlyActiveCharacter == allPlayerCharacters[i])
+                {
+                    StartCoroutine(MoveCombatCharacterToPosition(currentlyActiveCharacter, timeForPlayerCharacterToREachFront, allPlayerPartyCombatSpawnPoints[i].position));
+                    break;
+                }
+            }
+        }
+
+        currentActiveAlliance = characterToMoveNext.characterAlliance;
+        if (characterToMoveNext.characterAlliance == CombatCharacter.Alliance.Player)
+        {
+            StartCoroutine(MoveCombatCharacterToPosition(characterToMoveNext, timeForPlayerCharacterToREachFront, activePlayerPosition.position));
+        }
+        currentlyActiveCharacter = characterToMoveNext;
+        currentlySpawnedCharacterIndex = nextCharacterIndex;
+    }
+
+
     
+
+
+    private IEnumerator MoveCombatCharacterToPosition(CombatCharacter character, float timeToReachPosition, Vector3 goalPosition)
+    {
+        Vector3 startPosition = character.transform.position;
+        float timer = 0;
+        while (timer < timeToReachPosition)
+        {
+            timer += Time.deltaTime;
+            character.transform.position = Vector3.Lerp(startPosition, goalPosition, timer / timeToReachPosition);
+            yield return null;
+        }
+        character.transform.position = goalPosition;
+
+    }
 }

@@ -8,7 +8,7 @@ public class CombatCharacter : MonoBehaviour {
         Enemy,
         Player,
     }
-
+    public Alliance characterAlliance;
     [Header("Default Stats")]
     public float maxHealthPoints = 20f;
     public float maxSpecialPoints = 15f;
