@@ -5,6 +5,7 @@ using UnityEngine;
 public class CombatManager : MonoBehaviour {
     public Transform[] allEnemyCombatSpawnPoints;
     public Transform[] allPlayerPartyCombatSpawnPoints;
+    public Transform activePlayerPosition;
 
     private void OnDrawGizmos()
     {
@@ -22,5 +23,7 @@ public class CombatManager : MonoBehaviour {
             Gizmos.color = playerColor;
             Gizmos.DrawSphere(t.position, spherePointRadius);
         }
+        Gizmos.color = Color.green;
+        Gizmos.DrawSphere(activePlayerPosition.position, spherePointRadius);
     }
 }
