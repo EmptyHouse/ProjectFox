@@ -9,9 +9,8 @@ public class SplashScreenMenu : MonoBehaviour {
     public RectTransform optionPointer;
     public float timeToReachNextOption = .1f;
     public float timeBetweenAutoScrollOptions = .1f;
-#if UNITY_EDITOR
-    public UnityEditor.SceneAsset mainGameToLoad;
-#endif
+    public string mainGameToLoad;
+
     private SelectableUI currentlySelectedNode;
     private float previousVerticalInput;
 
@@ -81,7 +80,7 @@ public class SplashScreenMenu : MonoBehaviour {
     #region button events
     public void OnStartGameButtonPressed(SelectableButton button, bool onlyUpdateVisually)
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(mainGameToLoad.name);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(mainGameToLoad);
     }
 
     public void OnOptionsButtonPresed()

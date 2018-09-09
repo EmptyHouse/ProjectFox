@@ -1282,7 +1282,7 @@ MonoBehaviour:
   optionPointer: {fileID: 1317792979}
   timeToReachNextOption: 50
   timeBetweenAutoScrollOptions: 0.1
-  mainGameToLoad: {fileID: 102900000, guid: ac536101f415c1d48b2ecba75f2fe1d7, type: 3}
+  mainGameToLoad: MainScene
 --- !u!1 &1789411101
 GameObject:
   m_ObjectHideFlags: 0

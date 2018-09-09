@@ -1920,10 +1920,8 @@ MonoBehaviour:
   activePlayerPosition: {fileID: 55476372}
   allEnemyCharacters: []
   allPlayerCharacters: []
-  sceneToLoadOnVictory: {fileID: 102900000, guid: ac536101f415c1d48b2ecba75f2fe1d7,
-    type: 3}
-  sceneToLoadOnDefeat: {fileID: 102900000, guid: 799b51db03543324bbfb945247cd55d1,
-    type: 3}
+  sceneToLoadOnVictory: MainScene
+  sceneToLoadOnDefeat: 2_Splash
 --- !u!4 &2123529153
 Transform:
   m_ObjectHideFlags: 0

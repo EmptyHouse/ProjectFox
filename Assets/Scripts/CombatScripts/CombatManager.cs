@@ -47,10 +47,10 @@ public class CombatManager : MonoBehaviour {
     public List<CombatCharacter> allEnemyCharacters = new List<CombatCharacter>();
     public List<CombatCharacter> allPlayerCharacters = new List<CombatCharacter>();
 
-#if UNITY_EDITOR
-    public UnityEditor.SceneAsset sceneToLoadOnVictory;
-    public UnityEditor.SceneAsset sceneToLoadOnDefeat;
-#endif
+
+    public string sceneToLoadOnVictory;
+    public string sceneToLoadOnDefeat;
+
     private void Awake()
     {
         instance = this;
@@ -227,14 +227,14 @@ public class CombatManager : MonoBehaviour {
     {
         currentCombatState = CombatState.PlayerWon;
         CombatHUD.Instance.victoryText.gameObject.SetActive(true);
-        StartCoroutine(LoadNewScene(sceneToLoadOnVictory.name));
+        StartCoroutine(LoadNewScene(sceneToLoadOnVictory));
     }
 
     private void OnPlayerLostCombat()
     {
         currentCombatState = CombatState.PlayerLost;
         CombatHUD.Instance.defeatText.gameObject.SetActive(true);
-        StartCoroutine(LoadNewScene(sceneToLoadOnDefeat.name));
+        StartCoroutine(LoadNewScene(sceneToLoadOnDefeat));
     }
 
     private IEnumerator AttackCharacter(CombatCharacter attackingCharacter, CombatCharacter characterBeingAttacked)

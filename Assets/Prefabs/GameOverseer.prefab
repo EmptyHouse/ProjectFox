@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61c4a3aba2238724fad539e9addb3d89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemiesDeadList: 
   allEnemyNPCs:
   - {fileID: 0}
   - {fileID: 0}
@@ -74,4 +75,4 @@ MonoBehaviour:
     type: 2}
   mushroomCombatPrefab: {fileID: 114030787077060514, guid: 3afee4ba1507d4940a144167522f858a,
     type: 2}
-  encounterScene: {fileID: 102900000, guid: c00c5d958c427f947a7311f3a94ef801, type: 3}
+  encounterScene: TestBattleScene

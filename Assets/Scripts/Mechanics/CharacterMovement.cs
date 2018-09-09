@@ -36,7 +36,7 @@ public class CharacterMovement : MonoBehaviour {
                     GameOverseer.Instance.enemiesDeadList[i] = true;
                 }
             }
-            UnityEngine.SceneManagement.SceneManager.LoadScene(GameOverseer.Instance.encounterScene.name);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(GameOverseer.Instance.encounterScene);
         }
     }
 
