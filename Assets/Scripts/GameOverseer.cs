@@ -26,7 +26,12 @@ public class GameOverseer : MonoBehaviour {
         GAME_PLAYING,
         MENU_OPEN,
     }
+
+    public Vector3 playerPosition { get; set; }
+    public bool[] enemiesDeadList;
+
     public GameState currentGameState { get; private set; }
+    public EnemyNPCEncounter[] allEnemyNPCs = new EnemyNPCEncounter[10];
 
     [Header("Combat Character Prefabs")]
     public CombatCharacter foxCombatPrefab;
@@ -37,10 +42,46 @@ public class GameOverseer : MonoBehaviour {
     public CombatCharacter slimeCombatPrefab;
     public CombatCharacter mushroomCombatPrefab;
 
+    public UnityEditor.SceneAsset encounterScene;
 
-    private void Awake()
+
+    private void Start()
     {
+        if (instance != null)
+        {
+            instance.allEnemyNPCs = this.allEnemyNPCs;
+            SetUpForReloadScene();
+            Destroy(this.gameObject);
+            PlayerStats.Instance.triggerBoxCollider.enabled = true;
+            return;
+        }
         instance = this;
+        DontDestroyOnLoad(this.gameObject);
+        enemiesDeadList = new bool[allEnemyNPCs.Length];
+        
+    }
+
+    public void SetUpForReloadScene()
+    {
+        int countEnemiesDead = 0;
+        PlayerStats.Instance.transform.position = instance.playerPosition;
+        for (int i = 0; i < instance.enemiesDeadList.Length; i++)
+        {
+            if (instance.enemiesDeadList[i])
+            {
+                countEnemiesDead++;
+                allEnemyNPCs[i].gameObject.SetActive(false);
+            }
+        }
+        if (countEnemiesDead >= allEnemyNPCs.Length)
+        {
+            OnPlayerWonGame();
+        }
+    }
+
+    private void OnPlayerWonGame()
+    {
+
     }
 
 

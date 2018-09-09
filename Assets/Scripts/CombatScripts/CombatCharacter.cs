@@ -14,8 +14,9 @@ public class CombatCharacter : MonoBehaviour {
     public float maxHealthPoints = 20f;
     public float maxSpecialPoints = 15f;
     public float armorClass = 5f;
-    [Range(0f, 1f)]
+    
     public float power = 15f;
+    [Range(0f, 1f)]
     public float evasionRate = .2f;
     public float speedInCombat = 1f;
 

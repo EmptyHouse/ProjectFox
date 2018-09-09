@@ -115,6 +115,7 @@ MonoBehaviour:
   maxHealthPoints: 20
   maxSpecialPoints: 15
   armorClass: 5
+  power: 10
   evasionRate: 0.2
   speedInCombat: 1
   pointerPosition: {fileID: 4805617553715036}

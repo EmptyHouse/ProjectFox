@@ -112,9 +112,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterAlliance: 1
   characterName: Leroy
-  maxHealthPoints: 20
-  maxSpecialPoints: 15
+  maxHealthPoints: 10
+  maxSpecialPoints: 30
   armorClass: 5
+  power: 30
   evasionRate: 0.2
   speedInCombat: 1
   pointerPosition: {fileID: 4934091348806146}

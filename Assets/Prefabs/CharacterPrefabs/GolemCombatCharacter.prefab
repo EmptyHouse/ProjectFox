@@ -112,9 +112,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterAlliance: 0
   characterName: Rocky
-  maxHealthPoints: 20
+  maxHealthPoints: 50
   maxSpecialPoints: 15
   armorClass: 5
+  power: 20
   evasionRate: 0.2
   speedInCombat: 1
   pointerPosition: {fileID: 4822199862666222}

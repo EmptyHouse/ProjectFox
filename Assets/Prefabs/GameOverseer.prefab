@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1357666336113410}
+  m_IsPrefabAsset: 1
+--- !u!1 &1357666336113410
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4847576465963378}
+  - component: {fileID: 114158510450452302}
+  m_Layer: 0
+  m_Name: GameOverseer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4847576465963378
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1357666336113410}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -15.75, z: -8.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114158510450452302
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1357666336113410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61c4a3aba2238724fad539e9addb3d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allEnemyNPCs:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  foxCombatPrefab: {fileID: 114420876725406576, guid: 11793d46c5698ef4bb0e63d65bae3ded,
+    type: 2}
+  bearCombatPrefab: {fileID: 114015303981801518, guid: 249de5dd9c1eb114f9a0c71638b32b12,
+    type: 2}
+  owlCombatPrefab: {fileID: 114538025249209224, guid: 46be26e36dd0001458dd899ff823c8aa,
+    type: 2}
+  golemCombatPrefab: {fileID: 114662842293126590, guid: c64da0e4e76788c45bfdc8c146a492d2,
+    type: 2}
+  slimeCombatPrefab: {fileID: 114371465569661888, guid: 2c7a88066ead46c4fbb92aaaad032639,
+    type: 2}
+  mushroomCombatPrefab: {fileID: 114030787077060514, guid: 3afee4ba1507d4940a144167522f858a,
+    type: 2}
+  encounterScene: {fileID: 102900000, guid: c00c5d958c427f947a7311f3a94ef801, type: 3}

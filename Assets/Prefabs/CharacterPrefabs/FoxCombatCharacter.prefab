@@ -112,9 +112,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterAlliance: 1
   characterName: Toby
-  maxHealthPoints: 20
+  maxHealthPoints: 15
   maxSpecialPoints: 15
   armorClass: 5
+  power: 20
   evasionRate: 0.2
   speedInCombat: 1
   pointerPosition: {fileID: 4002664666643182}

@@ -112,9 +112,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterAlliance: 0
   characterName: Slimey
-  maxHealthPoints: 20
+  maxHealthPoints: 5
   maxSpecialPoints: 15
   armorClass: 5
+  power: 5
   evasionRate: 0.2
   speedInCombat: 1
   pointerPosition: {fileID: 4811947426037960}

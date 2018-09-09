@@ -112,9 +112,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterAlliance: 1
   characterName: Jekal
-  maxHealthPoints: 20
+  maxHealthPoints: 50
   maxSpecialPoints: 15
   armorClass: 5
+  power: 10
   evasionRate: 0.2
   speedInCombat: 1
   pointerPosition: {fileID: 4661689202051982}
