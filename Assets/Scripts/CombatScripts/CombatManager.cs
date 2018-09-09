@@ -123,9 +123,36 @@ public class CombatManager : MonoBehaviour {
         currentlySpawnedCharacterIndex = nextCharacterIndex;
     }
 
+    public void AttackCharacter()
+    {
 
+    }
+
+    public void DefendCharacter()
+    {
+
+    }
+
+    public void SpecialAttackCharacter()
+    {
+
+    }
+
+    private IEnumerator AttackCharacter(CombatCharacter attackingCharacter, CombatCharacter characterBeingAttacked)
+    {
+
+        yield break;
+    }
     
+    private IEnumerator CharacterGuard(CombatCharacter charachterThatIsGuarding)
+    {
+        yield break;
+    }
 
+    private IEnumerator SpecialAttackCharacter(CombatCharacter characterAttackign, CombatCharacter characterBeingAttacked)
+    {
+        yield break;
+    }
 
     private IEnumerator MoveCombatCharacterToPosition(CombatCharacter character, float timeToReachPosition, Vector3 goalPosition)
     {

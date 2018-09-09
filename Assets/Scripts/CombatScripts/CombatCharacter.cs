@@ -20,13 +20,19 @@ public class CombatCharacter : MonoBehaviour {
     public float currentHealthPoints { get; private set; }
     public float currentSpecialPoints { get; private set; }
 
+    private SpriteRenderer spriteRenderer;
+
     private void Start()
     {
         currentHealthPoints = maxHealthPoints;
         currentSpecialPoints = maxSpecialPoints;
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
-
+    private void Update()
+    {
+        spriteRenderer.transform.LookAt(Camera.main.transform.position);
+    }
 
     public virtual void TakeDamage(CombatCharacter characterThatDamagedMe, float damageToTake)
     {
