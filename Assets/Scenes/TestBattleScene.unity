@@ -1708,7 +1708,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointerObjectToEnemy: {fileID: 871017198}
-  pointerMovementSpeed: 100
+  pointerMovementSpeed: 10
+  combatEventType: 0
 --- !u!1 &1869031508
 GameObject:
   m_ObjectHideFlags: 0
@@ -1829,7 +1830,7 @@ MonoBehaviour:
   timeForPlayerCharacterToREachFront: 0.1
   currentActiveAlliance: 0
   currentlyActiveCharacter: {fileID: 0}
-  currentlySpawnedCharacterIndex: 0
+  currentlActiveCharacterIndex: 0
   allEnemyCombatSpawnPoints:
   - {fileID: 1869031509}
   - {fileID: 6395835}

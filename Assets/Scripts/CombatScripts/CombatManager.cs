@@ -24,6 +24,15 @@ public class CombatManager : MonoBehaviour {
         Guard,
     }
 
+    public enum CombatState
+    {
+        CombatInSession,
+        PlayerWon,
+        PlayerLost,
+    }
+
+    private CombatState currentCombatState;
+
     public float timeForPlayerCharacterToREachFront = .1f;
 
     public CombatCharacter.Alliance currentActiveAlliance;
@@ -45,6 +54,7 @@ public class CombatManager : MonoBehaviour {
 
     private void Start()
     {
+        currentCombatState = CombatState.CombatInSession;
         SetupCombatScenario();
     }
 
@@ -127,6 +137,7 @@ public class CombatManager : MonoBehaviour {
 
     public void SetNextActiveCharacter()
     {
+        
         int nextCharacterIndex = currentlActiveCharacterIndex + 1;
         nextCharacterIndex = SplashScreenMenu.CustomMod(nextCharacterIndex, orderOfCharacterBasedOnSpeed.Count);
         CombatCharacter characterToMoveNext = orderOfCharacterBasedOnSpeed[nextCharacterIndex];
@@ -140,6 +151,10 @@ public class CombatManager : MonoBehaviour {
                     break;
                 }
             }
+        }
+        if (currentCombatState != CombatState.CombatInSession)
+        {
+            return;
         }
 
         currentActiveAlliance = characterToMoveNext.characterAlliance;
@@ -172,6 +187,39 @@ public class CombatManager : MonoBehaviour {
 
     }
 
+
+    public void CharacterDied(CombatCharacter characterThatDied)
+    {
+        orderOfCharacterBasedOnSpeed.Remove(characterThatDied);
+        switch (characterThatDied.characterAlliance)
+        {
+            case CombatCharacter.Alliance.Enemy:
+                allEnemyCharacters.Remove(characterThatDied);
+                if (allEnemyCharacters.Count == 0)
+                {
+                    OnPlayerWonCombat();
+                }
+                break;
+            case CombatCharacter.Alliance.Player:
+                allPlayerCharacters.Remove(characterThatDied);
+                if (allPlayerCharacters.Count == 0)
+                {
+                    OnPlayerLostCombat();
+                }
+                break;
+        }
+    }
+
+    private void OnPlayerWonCombat()
+    {
+        currentCombatState = CombatState.PlayerWon;
+    }
+
+    private void OnPlayerLostCombat()
+    {
+        currentCombatState = CombatState.PlayerLost;
+    }
+
     private IEnumerator AttackCharacter(CombatCharacter attackingCharacter, CombatCharacter characterBeingAttacked)
     {
         Vector3 previousPosition = attackingCharacter.transform.position;
@@ -179,6 +227,7 @@ public class CombatManager : MonoBehaviour {
         float timeToReturn = .4f;
         StartCoroutine(MoveCombatCharacterToPosition(attackingCharacter, timeToReachCharacter, characterBeingAttacked.transform.position));
         yield return new WaitForSeconds(timeToReachCharacter);
+        characterBeingAttacked.TakeDamage(attackingCharacter, attackingCharacter.power);
         StartCoroutine(MoveCombatCharacterToPosition(attackingCharacter, timeToReturn, previousPosition));
         yield return new WaitForSeconds(timeToReturn + .5f);
         SetNextActiveCharacter();

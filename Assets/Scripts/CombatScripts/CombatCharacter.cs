@@ -41,10 +41,15 @@ public class CombatCharacter : MonoBehaviour {
     public virtual void TakeDamage(CombatCharacter characterThatDamagedMe, float damageToTake)
     {
         currentHealthPoints -= damageToTake;
+        if (currentHealthPoints <= 0)
+        {
+            OnCharacterDied(characterThatDamagedMe);
+        }
     }
 
     public virtual void OnCharacterDied(CombatCharacter characterThatKilledMe)
     {
-
+        Destroy(this.gameObject);
+        CombatManager.Instance.CharacterDied(this);
     }
 }
