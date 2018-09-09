@@ -41,9 +41,9 @@ public class GameOverseer : MonoBehaviour {
     public CombatCharacter golemCombatPrefab;
     public CombatCharacter slimeCombatPrefab;
     public CombatCharacter mushroomCombatPrefab;
-
+#if UNITY_EDITOR
     public UnityEditor.SceneAsset encounterScene;
-
+#endif
 
     private void Start()
     {
