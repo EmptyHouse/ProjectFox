@@ -10,12 +10,15 @@ public class CombatCharacter : MonoBehaviour {
     }
     public Alliance characterAlliance;
     [Header("Default Stats")]
+    public string characterName;
     public float maxHealthPoints = 20f;
     public float maxSpecialPoints = 15f;
     public float armorClass = 5f;
     [Range(0f, 1f)]
     public float evasionRate = .2f;
     public float speedInCombat = 1f;
+
+    public Transform pointerPosition;
 
     public float currentHealthPoints { get; private set; }
     public float currentSpecialPoints { get; private set; }

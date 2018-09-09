@@ -11,6 +11,21 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1874913064963326}
   m_IsPrefabAsset: 1
+--- !u!1 &1012383035897854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4811947426037960}
+  m_Layer: 0
+  m_Name: PointetPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1503773349130480
 GameObject:
   m_ObjectHideFlags: 0
@@ -56,6 +71,19 @@ Transform:
   m_Father: {fileID: 4856794700061458}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4811947426037960
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1012383035897854}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.885, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4856794700061458}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4856794700061458
 Transform:
   m_ObjectHideFlags: 1
@@ -63,10 +91,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1874913064963326}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.91, y: -20.914, z: -15.762}
+  m_LocalPosition: {x: 266.26114, y: 241.29892, z: -446.73132}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4168096390370334}
+  - {fileID: 4811947426037960}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -82,11 +111,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterAlliance: 0
+  characterName: Slimey
   maxHealthPoints: 20
   maxSpecialPoints: 15
   armorClass: 5
   evasionRate: 0.2
   speedInCombat: 1
+  pointerPosition: {fileID: 0}
 --- !u!212 &212933323626202144
 SpriteRenderer:
   m_ObjectHideFlags: 1

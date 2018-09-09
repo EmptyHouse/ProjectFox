@@ -43,6 +43,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1716102878359358
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4934091348806146}
+  m_Layer: 0
+  m_Name: PointerPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &4130485065137124
 Transform:
   m_ObjectHideFlags: 1
@@ -63,12 +78,26 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1541692089717516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.78, y: -20.914, z: -15.762}
+  m_LocalPosition: {x: 263.8574, y: 243.22166, z: -448.5702}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4130485065137124}
+  - {fileID: 4934091348806146}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4934091348806146
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1716102878359358}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.132, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4824848206863780}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114538025249209224
 MonoBehaviour:
@@ -82,11 +111,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterAlliance: 1
+  characterName: Leroy
   maxHealthPoints: 20
   maxSpecialPoints: 15
   armorClass: 5
   evasionRate: 0.2
   speedInCombat: 1
+  pointerPosition: {fileID: 0}
 --- !u!212 &212588005861241580
 SpriteRenderer:
   m_ObjectHideFlags: 1

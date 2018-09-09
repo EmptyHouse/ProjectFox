@@ -1637,6 +1637,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3342eefd898c3084ea7d585792fb25e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointerObjectToEnemy: {fileID: 0}
+  pointerMovementSpeed: 100
 --- !u!1 &1869031508
 GameObject:
   m_ObjectHideFlags: 0
@@ -1767,6 +1769,8 @@ MonoBehaviour:
   - {fileID: 1620652640}
   - {fileID: 1240729413}
   activePlayerPosition: {fileID: 55476372}
+  allEnemyCharacters: []
+  allPlayerCharacters: []
 --- !u!4 &2123529153
 Transform:
   m_ObjectHideFlags: 0

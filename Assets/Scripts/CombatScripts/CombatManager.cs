@@ -28,8 +28,8 @@ public class CombatManager : MonoBehaviour {
     public Transform activePlayerPosition;
 
     private List<CombatCharacter> orderOfCharacterBasedOnSpeed = new List<CombatCharacter>();
-    private List<CombatCharacter> allEnemyCharacters = new List<CombatCharacter>();
-    private List<CombatCharacter> allPlayerCharacters = new List<CombatCharacter>();
+    public List<CombatCharacter> allEnemyCharacters = new List<CombatCharacter>();
+    public List<CombatCharacter> allPlayerCharacters = new List<CombatCharacter>();
 
     private void Awake()
     {
