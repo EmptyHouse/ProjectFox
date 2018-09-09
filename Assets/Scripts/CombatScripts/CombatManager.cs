@@ -47,6 +47,9 @@ public class CombatManager : MonoBehaviour {
     public List<CombatCharacter> allEnemyCharacters = new List<CombatCharacter>();
     public List<CombatCharacter> allPlayerCharacters = new List<CombatCharacter>();
 
+    public UnityEditor.SceneAsset sceneToLoadOnVictory;
+    public UnityEditor.SceneAsset sceneToLoadOnDefeat;
+
     private void Awake()
     {
         instance = this;
@@ -133,6 +136,7 @@ public class CombatManager : MonoBehaviour {
         }
         currentlActiveCharacterIndex = -1;
         SetNextActiveCharacter();
+        CombatHUD.Instance.FadeBlackBackground();
     }
 
     public void SetNextActiveCharacter()
@@ -152,12 +156,16 @@ public class CombatManager : MonoBehaviour {
                 }
             }
         }
+
         if (currentCombatState != CombatState.CombatInSession)
         {
             return;
         }
 
         currentActiveAlliance = characterToMoveNext.characterAlliance;
+        
+        currentlyActiveCharacter = characterToMoveNext;
+        currentlActiveCharacterIndex = nextCharacterIndex;
         if (characterToMoveNext.characterAlliance == CombatCharacter.Alliance.Player)
         {
             StartCoroutine(MoveCombatCharacterToPosition(characterToMoveNext, timeForPlayerCharacterToREachFront, activePlayerPosition.position));
@@ -166,10 +174,14 @@ public class CombatManager : MonoBehaviour {
         else
         {
             CombatHUD.Instance.ClosePlayerSelectionMenu();
+            SelectAIAction();
         }
-        currentlyActiveCharacter = characterToMoveNext;
-        currentlActiveCharacterIndex = nextCharacterIndex;
-        CombatHUD.Instance.FadeBlackBackground();
+
+    }
+
+    public void SelectAIAction()
+    {
+        AttackCharacter(allPlayerCharacters[Random.Range(0, allPlayerCharacters.Count)]);
     }
 
     public void AttackCharacter(CombatCharacter characterToAttack)
@@ -213,11 +225,15 @@ public class CombatManager : MonoBehaviour {
     private void OnPlayerWonCombat()
     {
         currentCombatState = CombatState.PlayerWon;
+        CombatHUD.Instance.victoryText.gameObject.SetActive(true);
+        StartCoroutine(LoadNewScene(sceneToLoadOnVictory));
     }
 
     private void OnPlayerLostCombat()
     {
         currentCombatState = CombatState.PlayerLost;
+        CombatHUD.Instance.defeatText.gameObject.SetActive(true);
+        StartCoroutine(LoadNewScene(sceneToLoadOnDefeat));
     }
 
     private IEnumerator AttackCharacter(CombatCharacter attackingCharacter, CombatCharacter characterBeingAttacked)
@@ -227,6 +243,10 @@ public class CombatManager : MonoBehaviour {
         float timeToReturn = .4f;
         StartCoroutine(MoveCombatCharacterToPosition(attackingCharacter, timeToReachCharacter, characterBeingAttacked.transform.position));
         yield return new WaitForSeconds(timeToReachCharacter);
+        HitText hitText = Instantiate<HitText>(CombatHUD.Instance.hitTextPrefab);
+        hitText.transform.parent = CombatHUD.Instance.transform;
+        hitText.transform.position = Camera.main.WorldToScreenPoint(characterBeingAttacked.pointerPosition.position);
+        hitText.SetUpHitText(attackingCharacter.power);
         characterBeingAttacked.TakeDamage(attackingCharacter, attackingCharacter.power);
         StartCoroutine(MoveCombatCharacterToPosition(attackingCharacter, timeToReturn, previousPosition));
         yield return new WaitForSeconds(timeToReturn + .5f);
@@ -234,6 +254,13 @@ public class CombatManager : MonoBehaviour {
         
     }
     
+    private IEnumerator LoadNewScene(UnityEditor.SceneAsset sceneToLoad)
+    {
+        StartCoroutine(CombatHUD.Instance.FadeInBlackBackground(1));
+        yield return new WaitForSeconds(2);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneToLoad.name);
+    }
+
     private IEnumerator CharacterGuard(CombatCharacter charachterThatIsGuarding)
     {
         yield break;

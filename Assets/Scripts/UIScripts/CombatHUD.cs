@@ -21,11 +21,16 @@ public class CombatHUD : MonoBehaviour {
     public Image blackBackground;
     public PlayerSelectionUI playerSelectionUI;
     public PlayerSelectEnemyUI selectEnemyUI;
+    public Text victoryText;
+    public Text defeatText;
+    public HitText hitTextPrefab;
 
     public void FadeBlackBackground()
     {
         StartCoroutine(FadeOutBlackBackground());
     }
+
+
 
     private IEnumerator FadeOutBlackBackground()
     {

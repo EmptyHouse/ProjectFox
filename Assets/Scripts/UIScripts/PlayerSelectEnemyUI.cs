@@ -76,7 +76,7 @@ public class PlayerSelectEnemyUI : MonoBehaviour {
 
         if (combatEventType == CombatManager.CombatEvent.Special)
         {
-
+            CombatManager.Instance.AttackCharacter(CombatManager.Instance.allEnemyCharacters[enemyThatIsSelectedIndex]);
         }
     }
 }

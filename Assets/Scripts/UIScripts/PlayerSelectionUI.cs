@@ -73,6 +73,7 @@ public class PlayerSelectionUI : MonoBehaviour {
     public void OnAttackButtonPressed(SelectableButton button, bool onlyUpdateVisaully)
     {
         CombatHUD.Instance.ClosePlayerSelectionMenu();
+        CombatHUD.Instance.selectEnemyUI.combatEventType = CombatManager.CombatEvent.Attack;
         CombatHUD.Instance.OpenSelectEnemyUI();
     }
 
@@ -85,6 +86,7 @@ public class PlayerSelectionUI : MonoBehaviour {
     public void OnSpecialButtonPressed(SelectableButton button, bool onlyUpdateVisually)
     {
         CombatHUD.Instance.ClosePlayerSelectionMenu();
+        CombatHUD.Instance.selectEnemyUI.combatEventType = CombatManager.CombatEvent.Attack;
         CombatHUD.Instance.OpenSelectEnemyUI();
     }
 
