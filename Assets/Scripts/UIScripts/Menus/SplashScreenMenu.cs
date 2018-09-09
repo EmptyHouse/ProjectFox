@@ -71,7 +71,7 @@ public class SplashScreenMenu : MonoBehaviour {
         
     }
 
-    private int CustomMod(int value, int length)
+    public static int CustomMod(int value, int length)
     {
         int modValue = (value % length)  + length;
         return modValue % length;
