@@ -328,6 +328,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 929623620}
     m_Modifications:
+    - target: {fileID: 114791099825440174, guid: e41616a21cdf48d469bbef911163af36,
+        type: 2}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224787688490127754, guid: e41616a21cdf48d469bbef911163af36,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -471,6 +476,31 @@ Prefab:
         type: 2}
       propertyPath: m_SizeDelta.y
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114791099825440174, guid: e41616a21cdf48d469bbef911163af36,
+        type: 2}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114791099825440174, guid: e41616a21cdf48d469bbef911163af36,
+        type: 2}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114791099825440174, guid: e41616a21cdf48d469bbef911163af36,
+        type: 2}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 929623621}
+    - target: {fileID: 114791099825440174, guid: e41616a21cdf48d469bbef911163af36,
+        type: 2}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnGuardButtonPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 114791099825440174, guid: e41616a21cdf48d469bbef911163af36,
+        type: 2}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e41616a21cdf48d469bbef911163af36, type: 2}
@@ -656,6 +686,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 929623620}
     m_Modifications:
+    - target: {fileID: 114791099825440174, guid: e41616a21cdf48d469bbef911163af36,
+        type: 2}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224787688490127754, guid: e41616a21cdf48d469bbef911163af36,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -809,6 +844,31 @@ Prefab:
         type: 2}
       propertyPath: m_SizeDelta.y
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114791099825440174, guid: e41616a21cdf48d469bbef911163af36,
+        type: 2}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114791099825440174, guid: e41616a21cdf48d469bbef911163af36,
+        type: 2}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114791099825440174, guid: e41616a21cdf48d469bbef911163af36,
+        type: 2}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 929623621}
+    - target: {fileID: 114791099825440174, guid: e41616a21cdf48d469bbef911163af36,
+        type: 2}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnAttackButtonPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 114791099825440174, guid: e41616a21cdf48d469bbef911163af36,
+        type: 2}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e41616a21cdf48d469bbef911163af36, type: 2}
@@ -1050,6 +1110,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 929623620}
     m_Modifications:
+    - target: {fileID: 114791099825440174, guid: e41616a21cdf48d469bbef911163af36,
+        type: 2}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 224787688490127754, guid: e41616a21cdf48d469bbef911163af36,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -1193,6 +1258,31 @@ Prefab:
         type: 2}
       propertyPath: m_SizeDelta.y
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114791099825440174, guid: e41616a21cdf48d469bbef911163af36,
+        type: 2}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114791099825440174, guid: e41616a21cdf48d469bbef911163af36,
+        type: 2}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114791099825440174, guid: e41616a21cdf48d469bbef911163af36,
+        type: 2}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 929623621}
+    - target: {fileID: 114791099825440174, guid: e41616a21cdf48d469bbef911163af36,
+        type: 2}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnSpecialButtonPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 114791099825440174, guid: e41616a21cdf48d469bbef911163af36,
+        type: 2}
+      propertyPath: buttonEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e41616a21cdf48d469bbef911163af36, type: 2}
@@ -1471,6 +1561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blackBackground: {fileID: 360148160}
+  playerSelectionUI: {fileID: 929623621}
 --- !u!1 &1620652639
 GameObject:
   m_ObjectHideFlags: 0

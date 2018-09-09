@@ -3,6 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CombatManager : MonoBehaviour {
+    private static CombatManager instance;
+
+    public static CombatManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = GameObject.FindObjectOfType<CombatManager>();
+            }
+            return instance;
+        }
+    }
+
     public float timeForPlayerCharacterToREachFront = .1f;
 
     public CombatCharacter.Alliance currentActiveAlliance;
@@ -16,6 +30,11 @@ public class CombatManager : MonoBehaviour {
     private List<CombatCharacter> orderOfCharacterBasedOnSpeed = new List<CombatCharacter>();
     private List<CombatCharacter> allEnemyCharacters = new List<CombatCharacter>();
     private List<CombatCharacter> allPlayerCharacters = new List<CombatCharacter>();
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
@@ -118,6 +137,11 @@ public class CombatManager : MonoBehaviour {
         if (characterToMoveNext.characterAlliance == CombatCharacter.Alliance.Player)
         {
             StartCoroutine(MoveCombatCharacterToPosition(characterToMoveNext, timeForPlayerCharacterToREachFront, activePlayerPosition.position));
+            CombatHUD.Instance.OpenPlayerSelectionMenu();
+        }
+        else
+        {
+            CombatHUD.Instance.ClosePlayerSelectionMenu();
         }
         currentlyActiveCharacter = characterToMoveNext;
         currentlySpawnedCharacterIndex = nextCharacterIndex;

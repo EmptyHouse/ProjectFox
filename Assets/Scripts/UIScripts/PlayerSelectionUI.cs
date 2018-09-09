@@ -49,6 +49,8 @@ public class PlayerSelectionUI : MonoBehaviour {
         previousVerticalInput = verticalInput;
     }
 
+
+
     private void UpdatePointerPosition()
     {
         optionPointer.position = Vector3.Lerp(optionPointer.position, pointerGoalPosition, Time.deltaTime * pointerMovementSpeed);
@@ -68,7 +70,19 @@ public class PlayerSelectionUI : MonoBehaviour {
     }
 
     #region button events
+    public void OnAttackButtonPressed(SelectableButton button, bool onlyUpdateVisaully)
+    {
+        
+    }
 
+    public void OnGuardButtonPressed(SelectableButton button, bool onlyUpdateVisually)
+    {
 
+    }
+
+    public void OnSpecialButtonPressed(SelectableButton button, bool onlyUpdateVisually)
+    {
+
+    }
     #endregion button events
 }

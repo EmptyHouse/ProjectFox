@@ -19,6 +19,7 @@ public class CombatHUD : MonoBehaviour {
         }
     }
     public Image blackBackground;
+    public PlayerSelectionUI playerSelectionUI;
 
     public void FadeBlackBackground()
     {
@@ -37,5 +38,15 @@ public class CombatHUD : MonoBehaviour {
             yield return null;
         }
         blackBackground.color = new Color(0, 0, 0, 0);
+    }
+
+    public void OpenPlayerSelectionMenu()
+    {
+        playerSelectionUI.gameObject.SetActive(true);
+    }
+
+    public void ClosePlayerSelectionMenu()
+    {
+        playerSelectionUI.gameObject.SetActive(false);
     }
 }
