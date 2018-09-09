@@ -121,6 +121,7 @@ public class CombatManager : MonoBehaviour {
         }
         currentlyActiveCharacter = characterToMoveNext;
         currentlySpawnedCharacterIndex = nextCharacterIndex;
+        CombatHUD.Instance.FadeBlackBackground();
     }
 
     public void AttackCharacter()
@@ -167,4 +168,6 @@ public class CombatManager : MonoBehaviour {
         character.transform.position = goalPosition;
 
     }
+
+    
 }
