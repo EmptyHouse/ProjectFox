@@ -6,9 +6,11 @@ public class PlayerSelectEnemyUI : MonoBehaviour {
     public Transform pointerObjectToEnemy;
     public float pointerMovementSpeed = 100;
 
-    private int enemyThatIsSelected = 0;
+    private int enemyThatIsSelectedIndex = 0;
     private float previousHorizontalInput;
     private float previousVerticalinput;
+
+    public CombatManager.CombatEvent combatEventType;
 
     private void Start()
     {
@@ -22,13 +24,13 @@ public class PlayerSelectEnemyUI : MonoBehaviour {
         if (verticalInput > SelectableUI.JOYSTICK_ACTIVATION_THRESHOLD &&
             previousVerticalinput < SelectableUI.JOYSTICK_ACTIVATION_THRESHOLD)
         {
-            SetNextSelectedEnemy(enemyThatIsSelected + 1);
+            SetNextSelectedEnemy(enemyThatIsSelectedIndex + 1);
         }
 
         if (verticalInput < -SelectableUI.JOYSTICK_ACTIVATION_THRESHOLD &&
             previousVerticalinput > -SelectableUI.JOYSTICK_ACTIVATION_THRESHOLD)
         {
-            SetNextSelectedEnemy(enemyThatIsSelected - 1);
+            SetNextSelectedEnemy(enemyThatIsSelectedIndex - 1);
         }
 
         if (SelectableUI.GetCancelButtonDown())
@@ -40,17 +42,20 @@ public class PlayerSelectEnemyUI : MonoBehaviour {
             EnemySelected();
         }
         previousVerticalinput = verticalInput;
+        UpdatePointerPosition();
     }
 
     private void UpdatePointerPosition()
     {
-        
+        CombatCharacter enemyThatIsSelected = CombatManager.Instance.allEnemyCharacters[enemyThatIsSelectedIndex];
+        Vector3 goalPosition = Camera.main.WorldToScreenPoint(enemyThatIsSelected.pointerPosition.position);
+        pointerObjectToEnemy.position = Vector3.Lerp(pointerObjectToEnemy.position, goalPosition, Time.deltaTime * pointerMovementSpeed);
     }
 
 
     public void SetNextSelectedEnemy(int selectedEnemyIndex)
     {
-        enemyThatIsSelected = SplashScreenMenu.CustomMod(selectedEnemyIndex, CombatManager.Instance.allEnemyCharacters.Count);
+        enemyThatIsSelectedIndex = SplashScreenMenu.CustomMod(selectedEnemyIndex, CombatManager.Instance.allEnemyCharacters.Count);
     }
 
 
@@ -64,5 +69,14 @@ public class PlayerSelectEnemyUI : MonoBehaviour {
     public void EnemySelected()
     {
         CombatHUD.Instance.CloseSelectEnemyUI();
+        if (combatEventType == CombatManager.CombatEvent.Attack)
+        {
+            CombatManager.Instance.AttackCharacter(CombatManager.Instance.allEnemyCharacters[enemyThatIsSelectedIndex]);
+        }
+
+        if (combatEventType == CombatManager.CombatEvent.Special)
+        {
+
+        }
     }
 }

@@ -17,11 +17,18 @@ public class CombatManager : MonoBehaviour {
         }
     }
 
+    public enum CombatEvent
+    {
+        Attack,
+        Special,
+        Guard,
+    }
+
     public float timeForPlayerCharacterToREachFront = .1f;
 
     public CombatCharacter.Alliance currentActiveAlliance;
     public CombatCharacter currentlyActiveCharacter;
-    public int currentlySpawnedCharacterIndex;
+    public int currentlActiveCharacterIndex;
 
     public Transform[] allEnemyCombatSpawnPoints;
     public Transform[] allPlayerPartyCombatSpawnPoints;
@@ -114,13 +121,13 @@ public class CombatManager : MonoBehaviour {
         {
             orderOfCharacterBasedOnSpeed.Add(c);
         }
-        currentlySpawnedCharacterIndex = -1;
+        currentlActiveCharacterIndex = -1;
         SetNextActiveCharacter();
     }
 
     public void SetNextActiveCharacter()
     {
-        int nextCharacterIndex = currentlySpawnedCharacterIndex + 1;
+        int nextCharacterIndex = currentlActiveCharacterIndex + 1;
         nextCharacterIndex = SplashScreenMenu.CustomMod(nextCharacterIndex, orderOfCharacterBasedOnSpeed.Count);
         CombatCharacter characterToMoveNext = orderOfCharacterBasedOnSpeed[nextCharacterIndex];
         if (currentlyActiveCharacter != null && currentlyActiveCharacter.characterAlliance == CombatCharacter.Alliance.Player)
@@ -146,13 +153,13 @@ public class CombatManager : MonoBehaviour {
             CombatHUD.Instance.ClosePlayerSelectionMenu();
         }
         currentlyActiveCharacter = characterToMoveNext;
-        currentlySpawnedCharacterIndex = nextCharacterIndex;
+        currentlActiveCharacterIndex = nextCharacterIndex;
         CombatHUD.Instance.FadeBlackBackground();
     }
 
-    public void AttackCharacter()
+    public void AttackCharacter(CombatCharacter characterToAttack)
     {
-
+        StartCoroutine(AttackCharacter(orderOfCharacterBasedOnSpeed[currentlActiveCharacterIndex], characterToAttack));
     }
 
     public void DefendCharacter()
@@ -167,8 +174,15 @@ public class CombatManager : MonoBehaviour {
 
     private IEnumerator AttackCharacter(CombatCharacter attackingCharacter, CombatCharacter characterBeingAttacked)
     {
-
-        yield break;
+        Vector3 previousPosition = attackingCharacter.transform.position;
+        float timeToReachCharacter = .2f;
+        float timeToReturn = .4f;
+        StartCoroutine(MoveCombatCharacterToPosition(attackingCharacter, timeToReachCharacter, characterBeingAttacked.transform.position));
+        yield return new WaitForSeconds(timeToReachCharacter);
+        StartCoroutine(MoveCombatCharacterToPosition(attackingCharacter, timeToReturn, previousPosition));
+        yield return new WaitForSeconds(timeToReturn + .5f);
+        SetNextActiveCharacter();
+        
     }
     
     private IEnumerator CharacterGuard(CombatCharacter charachterThatIsGuarding)

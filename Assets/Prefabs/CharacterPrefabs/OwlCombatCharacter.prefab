@@ -117,7 +117,7 @@ MonoBehaviour:
   armorClass: 5
   evasionRate: 0.2
   speedInCombat: 1
-  pointerPosition: {fileID: 0}
+  pointerPosition: {fileID: 4934091348806146}
 --- !u!212 &212588005861241580
 SpriteRenderer:
   m_ObjectHideFlags: 1
