@@ -9,18 +9,20 @@ public class CharacterMovement : MonoBehaviour {
     public float movementAcceleration = 10;
     public SpriteRenderer spriteReference;
     private Rigidbody rigid;
-
+    private Animator anim;
    
 
     private void Start()
     {
         rigid = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
         //spriteReference = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void Update()
     {
         spriteReference.transform.LookAt(Camera.main.transform.position);
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -48,6 +50,7 @@ public class CharacterMovement : MonoBehaviour {
     public void UpdateMovement(float horizontalInput, float verticalInput)
     {
         float mag = Mathf.Min(new Vector2(horizontalInput, verticalInput).magnitude, 1);
+        anim.SetFloat("Speed", mag);
         Vector3 currentVelocity = rigid.velocity;
         currentVelocity.y = 0;
         Vector3 goalVelocity = mag * (new Vector3(horizontalInput, 0, verticalInput)).normalized * maxCharacterSpeed;
@@ -55,6 +58,7 @@ public class CharacterMovement : MonoBehaviour {
         Vector3 velocity = Vector3.MoveTowards(currentVelocity, goalVelocity, Time.fixedDeltaTime * movementAcceleration);
         rigid.velocity = new Vector3(velocity.x, rigid.velocity.y, velocity.z);
         FlipSpriteBasedOnInput(horizontalInput);
+
     }
 
     private void FlipSpriteBasedOnInput(float hInput)

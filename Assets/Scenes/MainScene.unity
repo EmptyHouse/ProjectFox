@@ -1390,6 +1390,7 @@ GameObject:
   - component: {fileID: 1716368239}
   - component: {fileID: 1716368238}
   - component: {fileID: 1716368240}
+  - component: {fileID: 1716368241}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1493,6 +1494,24 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: -1.7, z: 0}
+--- !u!95 &1716368241
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1716368233}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 09f38f954832ce3498bad93c6a76aedc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1722710075
 GameObject:
   m_ObjectHideFlags: 0
