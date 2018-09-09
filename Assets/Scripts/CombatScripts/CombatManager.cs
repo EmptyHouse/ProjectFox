@@ -114,12 +114,14 @@ public class CombatManager : MonoBehaviour {
         {
             orderOfCharacterBasedOnSpeed.Add(c);
         }
-
-        SetNextActiveCharacter(0);
+        currentlySpawnedCharacterIndex = -1;
+        SetNextActiveCharacter();
     }
 
-    private void SetNextActiveCharacter(int nextCharacterIndex)
+    public void SetNextActiveCharacter()
     {
+        int nextCharacterIndex = currentlySpawnedCharacterIndex + 1;
+        nextCharacterIndex = SplashScreenMenu.CustomMod(nextCharacterIndex, orderOfCharacterBasedOnSpeed.Count);
         CombatCharacter characterToMoveNext = orderOfCharacterBasedOnSpeed[nextCharacterIndex];
         if (currentlyActiveCharacter != null && currentlyActiveCharacter.characterAlliance == CombatCharacter.Alliance.Player)
         {

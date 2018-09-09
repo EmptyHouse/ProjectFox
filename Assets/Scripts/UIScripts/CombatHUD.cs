@@ -20,6 +20,7 @@ public class CombatHUD : MonoBehaviour {
     }
     public Image blackBackground;
     public PlayerSelectionUI playerSelectionUI;
+    public PlayerSelectEnemyUI selectEnemyUI;
 
     public void FadeBlackBackground()
     {
@@ -40,6 +41,19 @@ public class CombatHUD : MonoBehaviour {
         blackBackground.color = new Color(0, 0, 0, 0);
     }
 
+    public IEnumerator FadeInBlackBackground(float timeToFadeInCompletely)
+    {
+        float timer = 0;
+        blackBackground.color = new Color(0, 0, 0, 0);
+        while (timer < timeToFadeInCompletely)
+        {
+            timer += Time.deltaTime;
+            blackBackground.color = new Color(0, 0, 0, timer / timeToFadeInCompletely);   
+            yield return null;
+        }
+        blackBackground.color = new Color(0, 0, 0, 1);
+    }
+
     public void OpenPlayerSelectionMenu()
     {
         playerSelectionUI.gameObject.SetActive(true);
@@ -48,5 +62,21 @@ public class CombatHUD : MonoBehaviour {
     public void ClosePlayerSelectionMenu()
     {
         playerSelectionUI.gameObject.SetActive(false);
+    }
+
+    public void OpenSelectEnemyUI()
+    {
+        selectEnemyUI.gameObject.SetActive(true);
+    }
+
+    public void CloseSelectEnemyUI()
+    {
+        selectEnemyUI.gameObject.SetActive(false);
+    }
+
+    public void CancelSelectEnemyUI()
+    {
+        CloseSelectEnemyUI();
+        OpenPlayerSelectionMenu();
     }
 }

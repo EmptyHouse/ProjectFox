@@ -72,17 +72,22 @@ public class PlayerSelectionUI : MonoBehaviour {
     #region button events
     public void OnAttackButtonPressed(SelectableButton button, bool onlyUpdateVisaully)
     {
-        
+        CombatHUD.Instance.ClosePlayerSelectionMenu();
+        CombatHUD.Instance.OpenSelectEnemyUI();
     }
 
     public void OnGuardButtonPressed(SelectableButton button, bool onlyUpdateVisually)
     {
-
+        CombatHUD.Instance.ClosePlayerSelectionMenu();
+        CombatManager.Instance.SetNextActiveCharacter();
     }
 
     public void OnSpecialButtonPressed(SelectableButton button, bool onlyUpdateVisually)
     {
-
+        CombatHUD.Instance.ClosePlayerSelectionMenu();
+        CombatHUD.Instance.OpenSelectEnemyUI();
     }
+
+    
     #endregion button events
 }
