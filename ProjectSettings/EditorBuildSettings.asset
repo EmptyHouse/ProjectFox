@@ -9,11 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/TestBattleScene.unity
-    guid: c00c5d958c427f947a7311f3a94ef801
-  - enabled: 1
     path: Assets/Scenes/2_Splash.unity
     guid: 799b51db03543324bbfb945247cd55d1
+  - enabled: 1
+    path: Assets/Scenes/TestBattleScene.unity
+    guid: c00c5d958c427f947a7311f3a94ef801
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: ac536101f415c1d48b2ecba75f2fe1d7
