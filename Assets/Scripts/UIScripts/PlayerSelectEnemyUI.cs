@@ -17,6 +17,11 @@ public class PlayerSelectEnemyUI : MonoBehaviour {
         
     }
 
+    private void OnEnable()
+    {
+        enemyThatIsSelectedIndex = 0;
+    }
+
     private void Update()
     {
         float verticalInput = SelectableUI.GetVertical();
