@@ -247,8 +247,8 @@ public class CombatManager : MonoBehaviour {
         HitText hitText = Instantiate<HitText>(CombatHUD.Instance.hitTextPrefab);
         hitText.transform.parent = CombatHUD.Instance.transform;
         hitText.transform.position = Camera.main.WorldToScreenPoint(characterBeingAttacked.pointerPosition.position);
-        hitText.SetUpHitText(attackingCharacter.power);
-        characterBeingAttacked.TakeDamage(attackingCharacter, attackingCharacter.power);
+        hitText.SetUpHitText(attackingCharacter.attackPower);
+        characterBeingAttacked.TakeDamage(attackingCharacter, attackingCharacter.attackPower);
         StartCoroutine(MoveCombatCharacterToPosition(attackingCharacter, timeToReturn, previousPosition));
         yield return new WaitForSeconds(timeToReturn + .5f);
         SetNextActiveCharacter();
