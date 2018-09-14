@@ -2,8 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// Manager class handles all the logic when a player has entered combat
+/// </summary>
 public class CombatManager : MonoBehaviour {
-    private static CombatManager instance;
+    /// <summary>
+    /// In any given scene there should only be one instance of the combat manager.
+    /// </summary>
+    protected static CombatManager instance;
 
     public static CombatManager Instance
     {
@@ -31,13 +38,17 @@ public class CombatManager : MonoBehaviour {
         PlayerLost,
     }
 
+    /// <summary>
+    /// The current state of the combat session. This will help in ensuring that the player or AI do not make any actions
+    /// when they are not meant to
+    /// </summary>
     private CombatState currentCombatState;
 
     public float timeForPlayerCharacterToREachFront = .1f;
 
     public CombatCharacter.Alliance currentActiveAlliance;
     public CombatCharacter currentlyActiveCharacter;
-    public int currentlActiveCharacterIndex;
+    public int currentlyActivateCharacter;
 
     public Transform[] allEnemyCombatSpawnPoints;
     public Transform[] allPlayerPartyCombatSpawnPoints;
@@ -62,6 +73,9 @@ public class CombatManager : MonoBehaviour {
         SetupCombatScenario();
     }
 
+    /// <summary>
+    /// Draws the spawn points of where our combat characters will appear
+    /// </summary>
     private void OnDrawGizmos()
     {
         float spherePointRadius = .5f;
@@ -82,7 +96,9 @@ public class CombatManager : MonoBehaviour {
         Gizmos.DrawSphere(activePlayerPosition.position, spherePointRadius);
     }
 
-    
+    /// <summary>
+    /// Script that will set up the combat manager
+    /// </summary>
     public void SetupCombatScenario()
     {
         int numberOfEnemies = Random.Range(1, 4);
@@ -135,15 +151,19 @@ public class CombatManager : MonoBehaviour {
         {
             orderOfCharacterBasedOnSpeed.Add(c);
         }
-        currentlActiveCharacterIndex = -1;
+        currentlyActivateCharacter = -1;
         SetNextActiveCharacter();
         CombatHUD.Instance.FadeBlackBackground();
     }
 
+    /// <summary>
+    /// Sets the next active character in the combat order. The order will be created upon setup, typically based on speed. There may be certain scenarios
+    /// that set the order of the players based on other conditions
+    /// </summary>
     public void SetNextActiveCharacter()
     {
         
-        int nextCharacterIndex = currentlActiveCharacterIndex + 1;
+        int nextCharacterIndex = currentlyActivateCharacter + 1;
         nextCharacterIndex = SplashScreenMenu.CustomMod(nextCharacterIndex, orderOfCharacterBasedOnSpeed.Count);
         CombatCharacter characterToMoveNext = orderOfCharacterBasedOnSpeed[nextCharacterIndex];
         if (currentlyActiveCharacter != null && currentlyActiveCharacter.characterAlliance == CombatCharacter.Alliance.Player)
@@ -166,7 +186,7 @@ public class CombatManager : MonoBehaviour {
         currentActiveAlliance = characterToMoveNext.characterAlliance;
         
         currentlyActiveCharacter = characterToMoveNext;
-        currentlActiveCharacterIndex = nextCharacterIndex;
+        currentlyActivateCharacter = nextCharacterIndex;
         if (characterToMoveNext.characterAlliance == CombatCharacter.Alliance.Player)
         {
             StartCoroutine(MoveCombatCharacterToPosition(characterToMoveNext, timeForPlayerCharacterToREachFront, activePlayerPosition.position));
@@ -187,7 +207,7 @@ public class CombatManager : MonoBehaviour {
 
     public void AttackCharacter(CombatCharacter characterToAttack)
     {
-        StartCoroutine(AttackCharacter(orderOfCharacterBasedOnSpeed[currentlActiveCharacterIndex], characterToAttack));
+        StartCoroutine(AttackCharacter(orderOfCharacterBasedOnSpeed[currentlyActivateCharacter], characterToAttack));
     }
 
     public void DefendCharacter()
