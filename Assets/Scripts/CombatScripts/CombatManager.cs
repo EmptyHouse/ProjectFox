@@ -202,24 +202,18 @@ public class CombatManager : MonoBehaviour {
 
     public void SelectAIAction()
     {
-        AttackCharacter(allPlayerCharacters[Random.Range(0, allPlayerCharacters.Count)]);
+        PerformCombatAction(allPlayerCharacters[Random.Range(0, allPlayerCharacters.Count)]);
     }
 
-    public void AttackCharacter(CombatCharacter characterToAttack)
+    /// <summary>
+    /// When a player has selected an action, this method should be called to perform that action. The components should
+    /// include the combat action that was selectd and the character that will be on the receiving end of the action
+    /// </summary>
+    /// <param name="characterToAttack"></param>
+    public void PerformCombatAction(CombatCharacter characterToAttack)
     {
         StartCoroutine(AttackCharacter(orderOfCharacterBasedOnSpeed[currentlyActivateCharacter], characterToAttack));
     }
-
-    public void DefendCharacter()
-    {
-
-    }
-
-    public void SpecialAttackCharacter()
-    {
-
-    }
-
 
     public void CharacterDied(CombatCharacter characterThatDied)
     {

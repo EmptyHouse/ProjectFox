@@ -76,12 +76,12 @@ public class PlayerSelectEnemyUI : MonoBehaviour {
         CombatHUD.Instance.CloseSelectEnemyUI();
         if (combatEventType == CombatManager.CombatEvent.Attack)
         {
-            CombatManager.Instance.AttackCharacter(CombatManager.Instance.allEnemyCharacters[enemyThatIsSelectedIndex]);
+            CombatManager.Instance.PerformCombatAction(CombatManager.Instance.allEnemyCharacters[enemyThatIsSelectedIndex]);
         }
 
         if (combatEventType == CombatManager.CombatEvent.Special)
         {
-            CombatManager.Instance.AttackCharacter(CombatManager.Instance.allEnemyCharacters[enemyThatIsSelectedIndex]);
+            CombatManager.Instance.PerformCombatAction(CombatManager.Instance.allEnemyCharacters[enemyThatIsSelectedIndex]);
         }
     }
 }
