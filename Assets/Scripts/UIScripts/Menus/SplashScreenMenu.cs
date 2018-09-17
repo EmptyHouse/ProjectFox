@@ -78,7 +78,7 @@ public class SplashScreenMenu : MonoBehaviour {
     }
 
     #region button events
-    public void OnStartGameButtonPressed(SelectableButton button, bool onlyUpdateVisually)
+    public void OnStartGameButtonPressed(SelectableButton button)
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(mainGameToLoad);
     }

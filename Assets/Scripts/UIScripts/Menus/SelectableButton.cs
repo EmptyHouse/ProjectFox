@@ -32,7 +32,7 @@ public class SelectableButton : SelectableUI {
     {
         if (GetSelectButtonDown())
         {
-            buttonEvent.Invoke(this, false);
+            buttonEvent.Invoke(this);
         }
     }
     #endregion monobehaivour methods
@@ -61,11 +61,11 @@ public class SelectableButton : SelectableUI {
 
     public override void VisuallyUpdateNode()
     {
-        buttonEvent.Invoke(this, true);
+        buttonEvent.Invoke(this);
     }
     #endregion override methods
     [System.Serializable]
-    public class ButtonEvent : UnityEvent<SelectableButton, bool>
+    public class ButtonEvent : UnityEvent<SelectableButton>
     {
 
     }
